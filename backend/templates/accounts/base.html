@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}CareBridge{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- MAIN STYLES -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/map.css' %}">
+
+    <!-- SCRIPTS -->
+    <script src="{% static 'js/script.js' %}" defer></script>
+    <script src="{% static 'js/maps.js' %}" defer></script>
+</head>
+<body class="cb-body">
+<header class="cb-header">
+    <div class="cb-header-inner">
+        <div class="cb-logo">
+            <img src="{% static 'assets/heart.jpg' %}" alt="CareBridge" class="cb-logo-img">
+            <span class="cb-logo-text">CareBridge</span>
+        </div>
+
+        <nav class="cb-nav">
+            <a href="/" class="cb-nav-link">Home</a>
+
+            {% if user.is_authenticated %}
+                <!-- Links active only AFTER login -->
+                <a href="/donation/create/" class="cb-nav-link">Donate</a>
+                <a href="/volunteer/register/" class="cb-nav-link">Volunteer</a>
+                <a href="/support-centers/" class="cb-nav-link">Support Centers</a>
+                <a href="/hospitals/" class="cb-nav-link">Hospitals</a>
+            {% else %}
+                <!-- Before login, send to login page (except Emergency) -->
+                <a href="/login/" class="cb-nav-link cb-nav-disabled" data-requires-login="true">Donate</a>
+                <a href="/login/" class="cb-nav-link cb-nav-disabled" data-requires-login="true">Volunteer</a>
+                <a href="/login/" class="cb-nav-link cb-nav-disabled" data-requires-login="true">Support Centers</a>
+                <a href="/login/" class="cb-nav-link cb-nav-disabled" data-requires-login="true">Hospitals</a>
+            {% endif %}
+
+            <!-- Emergency is always available -->
+            <a href="/emergency/" class="cb-nav-link cb-nav-emergency">Emergency</a>
+        </nav>
+
+        <div class="cb-auth">
+            {% if user.is_authenticated %}
+                <span class="cb-user-label">Hi, {{ user.username }}</span>
+                <a href="/logout/" class="cb-btn cb-btn-outline-small">Logout</a>
+            {% else %}
+                <a href="/login/" class="cb-btn cb-btn-outline-small">Login</a>
+                <a href="/register/" class="cb-btn cb-btn-primary-small">Register</a>
+            {% endif %}
+        </div>
+    </div>
+</header>
+
+<main class="cb-main">
+    {% if messages %}
+        <div class="cb-messages">
+            {% for message in messages %}
+                <div class="cb-message cb-message-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="cb-footer">
+    <p>© 2025 CareBridge. Connecting Hearts. Saving Lives.</p>
+</footer>
+</body>
+</html>

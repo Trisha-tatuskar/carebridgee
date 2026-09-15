@@ -1,0 +1,28 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+
+{% block title %}NGO / Support Center Dashboard - CareBridge{% endblock %}
+
+{% block content %}
+<h2 class="cb-page-title">NGO / Support Center Dashboard</h2>
+
+<p>Welcome, {{ user.username }} 👋</p>
+
+{% if center %}
+    <h3>Your Registered Center</h3>
+    <ul class="cb-dashboard-list">
+        <li><b>Name:</b> {{ center.name }}</li>
+        <li><b>Type:</b> {{ center.type }}</li>
+        <li><b>Address:</b> {{ center.address }}</li>
+        <li><b>Phone:</b> {{ center.phone }}</li>
+        <li><b>Email:</b> {{ center.email }}</li>
+    </ul>
+{% else %}
+    <p>You have not registered any support center yet.</p>
+    <p>
+        <a href="/support-center/register/" class="cb-link">
+            Register your NGO / Orphanage / Old-age home →
+        </a>
+    </p>
+{% endif %}
+{% endblock %}

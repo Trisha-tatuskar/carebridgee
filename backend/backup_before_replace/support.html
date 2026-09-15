@@ -1,0 +1,11 @@
+{% extends "accounts/base.html" %}
+{% block content %}
+<div class="form-card">
+  <h2>Support Center Registration</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn primary" type="submit">Register Support Center</button>
+  </form>
+</div>
+{% endblock %}

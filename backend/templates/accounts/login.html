@@ -1,0 +1,28 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+
+{% block title %}Login - CareBridge{% endblock %}
+
+{% block content %}
+<section class="cb-auth-section">
+    <div class="cb-form-card">
+        <h2 class="cb-form-title">Login</h2>
+        <p class="cb-form-subtitle">
+            Login once to access donation, volunteering, support centers and hospitals.
+        </p>
+
+        <form method="post" id="loginForm" class="cb-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="cb-btn cb-btn-primary cb-form-btn">
+                Login
+            </button>
+        </form>
+
+        <p class="cb-form-footer-text">
+            Don't have an account?
+            <a href="/register/">Register here</a>.
+        </p>
+    </div>
+</section>
+{% endblock %}

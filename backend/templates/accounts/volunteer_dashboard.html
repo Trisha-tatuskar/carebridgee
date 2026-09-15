@@ -1,0 +1,23 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+
+{% block title %}Volunteer Dashboard - CareBridge{% endblock %}
+
+{% block content %}
+<h2 class="cb-page-title">Volunteer Dashboard</h2>
+
+<p>Welcome, {{ user.username }} 👋</p>
+
+<p>This is your volunteer dashboard. Here you can see your basic info.</p>
+
+<ul class="cb-dashboard-list">
+    <li><b>Name:</b> {{ volunteer.full_name|default:user.get_full_name }}</li>
+    <li><b>Phone:</b> {{ volunteer.phone|default:"Not provided" }}</li>
+    <li><b>City:</b> {{ volunteer.city|default:"Not provided" }}</li>
+    <li><b>Skills:</b> {{ volunteer.skills|default:"Not provided" }}</li>
+</ul>
+
+<p style="margin-top:20px;">
+    <a href="/volunteer/" class="cb-link">View volunteer info / register again →</a>
+</p>
+{% endblock %}

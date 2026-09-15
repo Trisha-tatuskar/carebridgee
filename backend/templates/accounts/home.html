@@ -1,0 +1,87 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+
+{% block title %}Home - CareBridge{% endblock %}
+
+{% block content %}
+<section class="cb-hero">
+    <div class="cb-hero-text">
+        <h1 class="cb-hero-title">Connecting Hearts.<br>Saving Lives.</h1>
+
+        <p class="cb-hero-description">
+            CareBridge connects donors, volunteers and support centers to help
+            people in need during emergencies and everyday life.
+        </p>
+
+        <p class="cb-hero-sub">
+            New here?
+            <a href="/register/">Register first</a>
+            to donate or volunteer.
+        </p>
+
+        <div class="cb-hero-actions">
+            <!-- Emergency: always allowed -->
+            <a href="/emergency/" class="cb-btn cb-btn-primary">
+                Report Emergency
+            </a>
+
+            <!-- Donate: direct path -->
+            <a href="/donation/create/" class="cb-btn cb-btn-outline">
+                Make a Donation
+            </a>
+        </div>
+    </div>
+
+    <div class="cb-hero-image">
+        <img src="{% static 'assets/hero.jpg' %}" alt="CareBridge hero">
+    </div>
+</section>
+
+<!-- THREE MAIN CARDS -->
+<section class="cb-cards">
+    <div class="cb-card">
+        <img src="{% static 'assets/donation.jpg' %}" alt="Donate" class="cb-card-img">
+        <h3>Donate Essentials</h3>
+        <p>Share food, clothes, medicines or funds to support people in need.</p>
+        <a href="/donation/create/" class="cb-link">Start donating →</a>
+    </div>
+
+    <div class="cb-card">
+        <img src="{% static 'assets/volunteer.jpg' %}" alt="Volunteer" class="cb-card-img">
+        <h3>Become a Volunteer</h3>
+        <p>Help with deliveries, transportation, rescue response and more.</p>
+        <a href="/volunteer/register/" class="cb-link">Join volunteers →</a>
+    </div>
+
+    <div class="cb-card">
+        <img src="{% static 'assets/support_center.jpg' %}" alt="Support Centers" class="cb-card-img">
+        <h3>Support Centers</h3>
+        <p>Find orphanages, old-age homes and NGOs accepting donations.</p>
+        <!-- ✅ FIXED: use /support-centers/ (matches urls.py) -->
+        <a href="/support-centers/" class="cb-link">Browse support centers →</a>
+    </div>
+</section>
+
+<!-- HOSPITAL INFO SECTION -->
+<section class="cb-cards cb-cards-secondary">
+    <div class="cb-card">
+        <img src="{% static 'assets/emergency.jpg' %}" alt="Emergency" class="cb-card-img">
+        <h3>Emergency Response</h3>
+        <p>Quickly report accidents, medical issues, or critical situations.</p>
+        <a href="/emergency/" class="cb-link">Report emergency →</a>
+    </div>
+
+    <div class="cb-card">
+        <img src="{% static 'assets/heart.jpg' %}" alt="CareBridge Mission" class="cb-card-img">
+        <h3>Our Mission</h3>
+        <p>We bridge the gap between people who want to help and people who need help.</p>
+    </div>
+
+    <div class="cb-card">
+        <img src="{% static 'assets/hero.jpg' %}" alt="Hospitals" class="cb-card-img">
+        <h3>Nearby Hospitals</h3>
+        <p>View hospitals and medical facilities near your location.</p>
+        <a href="/hospitals/" class="cb-link">View hospitals →</a>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "accounts/base.html" %}
+{% block content %}
+<h2>Hospitals</h2>
+<div class="list-grid">
+  {% for h in hospitals %}
+    <div class="card">
+      <h3>{{ h.name }}</h3>
+      <p>{{ h.address }}</p>
+      <p>Phone: {{ h.phone }}</p>
+    </div>
+  {% empty %}
+    <p>No hospitals found.</p>
+  {% endfor %}
+</div>
+{% endblock %}

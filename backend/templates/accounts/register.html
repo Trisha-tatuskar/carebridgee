@@ -1,0 +1,62 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+
+{% block title %}Register - CareBridge{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <h1>Create an Account</h1>
+
+    {% if form.errors %}
+        <div class="cb-messages">
+            <div class="cb-message cb-message-error">
+                Please fix the errors below.
+            </div>
+        </div>
+    {% endif %}
+
+    <form method="post" class="cb-form">
+        {% csrf_token %}
+
+        <div class="cb-form-group">
+            <label for="id_username">Username</label>
+            {{ form.username }}
+        </div>
+
+        <div class="cb-form-group">
+            <label for="id_email">Email</label>
+            {{ form.email }}
+        </div>
+
+        <div class="cb-form-group">
+            <label for="id_password1">Password</label>
+            {{ form.password1 }}
+        </div>
+
+        <div class="cb-form-group">
+            <label for="id_password2">Confirm Password</label>
+            {{ form.password2 }}
+        </div>
+
+        <!-- ROLE SELECTION -->
+        <div class="cb-form-group">
+            <label for="id_role">Register as</label>
+            <select name="role" id="id_role" required>
+                <option value="">-- Select role --</option>
+                <option value="user">User in need</option>
+                <option value="volunteer">Volunteer</option>
+                <option value="ngo">NGO / Orphanage</option>
+            </select>
+        </div>
+
+        <button type="submit" class="cb-btn cb-btn-primary">
+            Register
+        </button>
+    </form>
+
+    <p class="auth-footer-text">
+        Already have an account?
+        <a href="/login/">Login here</a>
+    </p>
+</div>
+{% endblock %}

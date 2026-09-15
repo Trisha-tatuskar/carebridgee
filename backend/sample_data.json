@@ -1,0 +1,52 @@
+[
+  {
+    "model": "accounts.hospital",
+    "pk": 1,
+    "fields": {
+      "name": "City General Hospital",
+      "address": "12 Main Street, YourCity",
+      "phone": "9876543210",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    }
+  },
+  {
+    "model": "accounts.hospital",
+    "pk": 2,
+    "fields": {
+      "name": "Northside Clinic",
+      "address": "34 North Road, YourCity",
+      "phone": "9876501234",
+      "latitude": 12.9760,
+      "longitude": 77.5990
+    }
+  },
+  {
+    "model": "accounts.supportcenter",
+    "pk": 1,
+    "fields": {
+      "user": null,
+      "name": "Helping Hands NGO",
+      "center_type": "NGO",
+      "address": "7 Charity Lane, YourCity",
+      "phone": "9123456780",
+      "email": "helpinghands@gmail.com",
+      "latitude": 12.9730,
+      "longitude": 77.5900
+    }
+  },
+  {
+    "model": "accounts.supportcenter",
+    "pk": 2,
+    "fields": {
+      "user": null,
+      "name": "Sunrise Orphanage",
+      "center_type": "ORPHANAGE",
+      "address": "25 Sunshine Ave, YourCity",
+      "phone": "9123456799",
+      "email": "sunrise@gmail.com",
+      "latitude": 12.9680,
+      "longitude": 77.5960
+    }
+  }
+]

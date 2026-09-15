@@ -1,0 +1,27 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+
+{% block title %}Notifications - CareBridge{% endblock %}
+
+{% block content %}
+<section class="cb-page-header">
+    <h2>Notifications</h2>
+    <p>Updates about emergencies, donations, and tasks.</p>
+</section>
+
+<section class="cb-dashboard-section">
+    {% if notifications %}
+        <ul class="cb-list">
+            {% for n in notifications %}
+                <li class="cb-list-item">
+                    <strong>{{ n.title }}</strong><br>
+                    {{ n.message }}<br>
+                    <small>{{ n.created_at }}</small>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No notifications right now.</p>
+    {% endif %}
+</section>
+{% endblock %}

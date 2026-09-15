@@ -1,0 +1,67 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+
+{% block title %}Hospitals - CareBridge{% endblock %}
+
+{% block content %}
+<h2 class="cb-page-title">Nearby Hospitals</h2>
+
+<div id="map" class="cb-map"></div>
+
+<h3 class="cb-section-title">Some Hospitals Around</h3>
+
+<div class="cb-center-list">
+    <div class="cb-center-card">
+        <h3>City General Hospital</h3>
+        <p><b>Address:</b> MG Road, Bengaluru</p>
+        <p><b>Phone:</b> +91-80-1111-2222</p>
+    </div>
+    <div class="cb-center-card">
+        <h3>Sunrise Multi-speciality Hospital</h3>
+        <p><b>Address:</b> Whitefield, Bengaluru</p>
+        <p><b>Phone:</b> +91-80-3333-4444</p>
+    </div>
+    <div class="cb-center-card">
+        <h3>LifeCare Medical Center</h3>
+        <p><b>Address:</b> Jayanagar, Bengaluru</p>
+        <p><b>Phone:</b> +91-80-5555-6666</p>
+    </div>
+</div>
+
+<script>
+    function initMap() {
+        var mapCenter = { lat: 12.9716, lng: 77.5946 }; // Bangalore
+
+        var map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 11,
+            center: mapCenter
+        });
+
+        // Few random hospitals
+        var hospitals = [
+            {
+                name: "City General Hospital",
+                position: { lat: 12.977, lng: 77.592 }
+            },
+            {
+                name: "Sunrise Multi-speciality Hospital",
+                position: { lat: 12.969, lng: 77.71 }
+            },
+            {
+                name: "LifeCare Medical Center",
+                position: { lat: 12.92, lng: 77.59 }
+            }
+        ];
+
+        hospitals.forEach(function(h) {
+            new google.maps.Marker({
+                position: h.position,
+                map: map,
+                title: h.name
+            });
+        });
+    }
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwPpRFwoLw6QhuIia34WuPZZc8Irr5fjg&callback=initMap"></script>
+{% endblock %}

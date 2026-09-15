@@ -1,0 +1,23 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+
+{% block title %}Make a Donation - CareBridge{% endblock %}
+
+{% block content %}
+<section class="cb-page-header">
+    <h2>Make a Donation</h2>
+    <p>Donate food, clothes, medicines or funds for people in need.</p>
+</section>
+
+<section class="cb-form-section">
+    <div class="cb-form-card">
+        <form method="post" id="donationForm" class="cb-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="cb-btn cb-btn-primary cb-form-btn">
+                Submit Donation
+            </button>
+        </form>
+    </div>
+</section>
+{% endblock %}

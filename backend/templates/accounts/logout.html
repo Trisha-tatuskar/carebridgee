@@ -1,0 +1,21 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+
+{% block title %}Logged Out - CareBridge{% endblock %}
+
+{% block content %}
+<section class="cb-auth-section">
+    <div class="cb-form-card">
+        <h2 class="cb-form-title">You have been logged out</h2>
+        <p class="cb-form-subtitle">
+            Thank you for using CareBridge.
+        </p>
+        <a href="/login/" class="cb-btn cb-btn-primary cb-form-btn">
+            Login again
+        </a>
+        <a href="/" class="cb-btn cb-btn-outline cb-form-btn">
+            Back to Home
+        </a>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+
+{% block title %}Support Centers - CareBridge{% endblock %}
+
+{% block content %}
+
+<h2 class="cb-page-title">Support Centers Near You</h2>
+
+<div id="map" class="cb-map"></div>
+
+<h3 class="cb-section-title">Registered Support Centers</h3>
+
+{% if centers %}
+<div class="cb-center-list">
+    {% for c in centers %}
+        <div class="cb-center-card">
+            <h3>{{ c.name }}</h3>
+            <p><b>Type:</b> {{ c.type }}</p>
+            <p><b>Address:</b> {{ c.address }}</p>
+            <p><b>Phone:</b> {{ c.phone }}</p>
+            <p><b>Email:</b> {{ c.email }}</p>
+        </div>
+    {% endfor %}
+</div>
+{% else %}
+<p style="text-align:center; margin-top:20px; font-size:18px; color:red;">
+    🚫 No support centers available.
+</p>
+{% endif %}
+
+<script>
+function initMap() {
+    let defaultLocation = { lat: 12.9716, lng: 77.5946 }; // Bangalore
+    let map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 11,
+        center: defaultLocation
+    });
+
+    {% if centers %}
+        {% for c in centers %}
+            new google.maps.Marker({
+                position: { lat: {{ c.latitude }}, lng: {{ c.longitude }} },
+                map: map,
+                title: "{{ c.name }}"
+            });
+        {% endfor %}
+    {% endif %}
+}
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwPpRFwoLw6QhuIia34WuPZZc8Irr5fjg&callback=initMap"></script>
+
+{% endblock %}

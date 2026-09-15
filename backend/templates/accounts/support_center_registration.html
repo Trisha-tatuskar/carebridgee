@@ -1,0 +1,65 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}Support Center Registration - CareBridge{% endblock %}
+
+{% block content %}
+<div class="page-container">
+    <div class="form-card">
+        <h2>Register Your Support Center (NGO / Orphanage / Shelter)</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="{{ form.name.id_for_label }}">Center Name</label>
+                {{ form.name }}
+                {% if form.name.errors %}
+                    <div class="field-error">{{ form.name.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.center_type.id_for_label }}">Center Type</label>
+                {{ form.center_type }}
+                {% if form.center_type.errors %}
+                    <div class="field-error">{{ form.center_type.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.address.id_for_label }}">Address</label>
+                {{ form.address }}
+                {% if form.address.errors %}
+                    <div class="field-error">{{ form.address.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.phone.id_for_label }}">Phone</label>
+                {{ form.phone }}
+                {% if form.phone.errors %}
+                    <div class="field-error">{{ form.phone.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.email.id_for_label }}">Email</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <div class="field-error">{{ form.email.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.description.label_tag }}
+                {{ form.description }}
+                {% if form.description.errors %}
+                    <div class="field-error">{{ form.description.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="btn-primary">Save Support Center</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
