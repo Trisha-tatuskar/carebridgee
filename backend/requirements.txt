@@ -4,3 +4,5 @@ PyMySQL==1.1.0
 django-crispy-forms==2.0
 Pillow==10.4.0
 cryptography
+gunicorn
+whitenoise
