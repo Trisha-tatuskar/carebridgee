@@ -54,17 +54,16 @@ WSGI_APPLICATION = "carebridge_backend.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "carebridge_test",
-        "USER": "carebridge_user",
-        "PASSWORD": "Shaurya@25",
-        "HOST": "localhost",
-        "PORT": "3306",
+        "NAME": os.environ.get("MYSQLDATABASE", "carebridge_test"),
+        "USER": os.environ.get("MYSQLUSER", "carebridge_user"),
+        "PASSWORD": os.environ.get("MYSQLPASSWORD", ""),
+        "HOST": os.environ.get("MYSQLHOST", "localhost"),
+        "PORT": os.environ.get("MYSQLPORT", "3306"),
         "OPTIONS": {
             "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
         },
     }
 }
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
